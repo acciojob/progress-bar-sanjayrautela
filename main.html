@@ -4,27 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progress Bar</title>
-    <style>
-        .circle {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .circle.active {
-            background-color: #007bff;
-        }
-        #prev, #next {
-            margin: 5px;
-            cursor: pointer;
-        }
-        #prev:disabled, #next:disabled {
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="progressBar">
@@ -36,40 +16,6 @@
     </div>
     <button id="prev" disabled>Previous</button>
     <button id="next">Next</button>
-    <script>
-        const circles = document.querySelectorAll('.circle');
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
-        let activeIndex = 0;
-
-        function updateButtons() {
-            prev.disabled = activeIndex === 0;
-            next.disabled = activeIndex === circles.length - 1;
-        }
-
-        function updateCircles() {
-            circles.forEach((circle, index) => {
-                if (index <= activeIndex) {
-                    circle.classList.add('active');
-                } else {
-                    circle.classList.remove('active');
-                }
-            });
-        }
-
-        prev.addEventListener('click', () => {
-            activeIndex--;
-            updateCircles();
-            updateButtons();
-        });
-
-        next.addEventListener('click', () => {
-            activeIndex++;
-            updateCircles();
-            updateButtons();
-        });
-
-        updateButtons();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
